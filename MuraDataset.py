@@ -48,9 +48,4 @@ class MuraDataset(Dataset):  # initializing images and labels + transforms
 
 
 
-#simple codes to check if the images are inverted
-#image = Image.open('/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/train/XR_FINGER/patient00042/study1_positive/image2.png')
 
-#image = PIL.ImageOps.invert(image)
-#image = torchvision.transforms.functional.equalize(image)
-#image.show()
