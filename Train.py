@@ -21,10 +21,10 @@ num_epochs = 5
 
 def bone_classification(model):
     # data loading
-    train_set = MuraDataset(csv_file='/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/train_classes.csv',
-                            root_dir='/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/train', transform=transforms.ToTensor(), device=device)
-    test_set = MuraDataset(csv_file='/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/valid_classes.csv',
-                           root_dir='/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/valid', transform=transforms.ToTensor(), device=device)
+    train_set = MuraDataset(csv_file='./MURA-v1.1/train_classes.csv',
+                            root_dir='./MURA-v1.1/train', transform=transforms.ToTensor(), device=device)
+    test_set = MuraDataset(csv_file='./MURA-v1.1/valid_classes.csv',
+                           root_dir='./MURA-v1.1/valid', transform=transforms.ToTensor(), device=device)
 
     train_loader = DataLoader(dataset=train_set, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(dataset=test_set, batch_size=batch_size, shuffle=True)
@@ -76,7 +76,7 @@ def bone_classification(model):
     return model
 
 
-# TODO: Change the second training with a vector of labels instead of one value: (location, anomaly)
+
 def anomaly_classification(model):
     # data loading
     train_set = MuraDataset(csv_file='/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/train_anomalies.csv',
