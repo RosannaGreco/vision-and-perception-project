@@ -1,4 +1,5 @@
 
+
 # imports
 import torch
 import torch.nn as nn
@@ -10,10 +11,7 @@ from MuraDataset import MuraDataset
 from torchvision import models
 from torchsummary import summary
 from CNN import CNN
-#from Resnet import Resnet18
-#from Resnet import Resnet34
-#from Resnet import ResBlock
-#from Resnet import Resnet
+
 from ResNet import ResNet50
 from ResNet import ResNet101
 from ResNet import ResNet152
@@ -90,8 +88,7 @@ classifier = 3
 train = input('Wanna train the  model? [y/n]   ')
 if train == "y":
     n_classes = 3
-    #model = Resnet34(in_channels=3, outputs=n_classes )
-    #model = CNN(n_classes)
+    
     model = ResNet152(3,n_classes)
     model2 = anomaly_classification(model)
 load2 = input('Wanna load a pretrained model? [y/n]')
