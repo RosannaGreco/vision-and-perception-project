@@ -1,3 +1,4 @@
+#this file defines a Residual Network model 
 
 import torch
 from torch import nn
@@ -65,8 +66,7 @@ class ResNet(nn.Module):
         self.fc1 = nn.Linear(512*4, 120)
         self.fc2 = nn.Linear(120, outputs)
 
-        #dropout to avoid overfitting
-        #self.dropout = nn.Dropout(0.25)
+       
 
 
     def forward(self, input):
@@ -80,9 +80,9 @@ class ResNet(nn.Module):
 
         input = self.avgpool(input)
         input = input.reshape(input.shape[0], -1)
-        #input = self.dropout(input)
+        
         input = self.fc1(input)
-        #input = self.dropout(input)
+        
         input = self.fc2(input)
         return input
 
@@ -104,11 +104,7 @@ class ResNet(nn.Module):
 
 
 
-def ResNet50(in_channels = 3, outputs = 2):
-    return ResNet([3,4,6,3], in_channels, outputs)
 
-def ResNet101(in_channels = 3, outputs = 2):
-    return ResNet([3,4,23,3], in_channels, outputs)
 
 def ResNet152(in_channels = 3, outputs = 2):
     return ResNet([3,8,36,3], in_channels, outputs)
