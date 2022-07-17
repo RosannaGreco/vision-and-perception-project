@@ -1,14 +1,9 @@
 
-#This script performs Data augmentation starting from a csv file containing image paths and saves the resulting images in a new folder
-#It is possible to apply different combinations of operations assigning the relative flags.
+#This script performs Data augmentation starting from a csv file containing image paths and corresponding labels.
+#Then, it  saves the resulting images in a new folder. It is possible to apply different combinations of operations assigning the relative flags.
 
 
 
-#NOTE: the third classification is characterized by these labels
-#1 fracture
-#2 screws/plates
-#3 dislocation
-#4 other
 
 import torch
 import torchvision
@@ -21,10 +16,10 @@ from skimage import io
 import csv
 
 #flags
-flipping = 1
+flipping = 0
 crop = 0
 perspective = 0
-rotation = 1
+rotation = 0
 
 #transformations
 transform1 = tf.RandomPerspective(distortion_scale=0.55, p = 1.0)
@@ -33,14 +28,15 @@ transform3 = tf.CenterCrop(380)
 
 index = 0
 
-#file where we write paths and labels of the new images
-csv2 = '/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/train_fractures2.csv'
+#file when we will write the paths and labels of the new images
+csv2 = '/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerous_da.csv'
 f2 = open(csv2, 'w')
 writer = csv.writer(f2)
 
 
-#open the first csv and modify images
-with open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerus_anomalies.csv') as f1:
+#open the first csv and modify images depending on the corresponding flags
+#this csv file contains paths and labels of some anomalies we classified. 
+with open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerous_anomalies.csv') as f1:
     reader = csv.reader(f1)
 
 
@@ -83,9 +79,11 @@ with open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALI
 f2.close()
 f1.close()
 
-#concatenate csvs
-file1 = open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerus_anomalies_final.csv', "a") #file containing all paths and labels
-file2 = open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/train_fractures2.csv', "r") #f2
+#concatenate csvs----------------------------------
+#the file 'humerous_anomalies_final' contains the paths and labels contained in 'humerous_anomalies.csv' and all the images already generated
+#with this script. It will be used for the third classification
+file1 = open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerous_anomalies_final.csv', "a") 
+file2 = open('/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerous_da.csv', "r") #f2
 
 for line in file2:
     file1.write(line)
