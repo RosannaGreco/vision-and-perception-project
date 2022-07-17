@@ -1,3 +1,5 @@
+#This file contains a function checking the accuracy of a model 
+
 import torch
 
 
