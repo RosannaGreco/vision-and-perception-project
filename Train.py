@@ -1,3 +1,5 @@
+#this file contains the functions we used to train our models. 
+
 # imports
 import torch
 import torch.nn as nn
@@ -15,10 +17,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # Hyper-parameters
 in_channel = 3
 
-#learning_rate = 1e-3
-learning_rate = 0.0001
-batch_size = 5
-num_epochs = 15
+
+
 
 
 def bone_classification(model):
@@ -28,6 +28,8 @@ def bone_classification(model):
 
     learning_rate = 1e-3
     batch_size = 5
+    num_epochs = 10
+    
     train_loader = DataLoader(dataset=train_set, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(dataset=test_set, batch_size=batch_size, shuffle=True)
 
@@ -80,11 +82,7 @@ def bone_classification(model):
                 image_losses.append(image_loss)
 
         print(f'Cost at epoch {epoch} is {sum(losses) / len(losses)}')
-        #plt.ylim(0, 0.05)
-
-        #epoch_loss = running_loss / len(train_loader)
-        #epoch_losses.append(epoch_loss)
-    #plt.ylim(0, 0.05)
+        
     plt.plot(image_losses)
     plt.show()
     print('check accuracy on Training set')
