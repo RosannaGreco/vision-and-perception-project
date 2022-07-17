@@ -1,3 +1,5 @@
+#this file contains a class useful to build a dataset. 
+
 import os
 import pandas as pd
 import torch
@@ -26,27 +28,20 @@ class MuraDataset(Dataset):
         self.device = device
         self.transform = transform
 
-    def __len__(self):  # number of samples
+    def __len__(self):  
         return len(self.img_labels)
 
     def __getitem__(self, idx):
         img_path = self.img_labels.iloc[idx, 0]
-
-        image = io.imread(img_path)
         image= Image.open(img_path)
     #resizing and conversion to RGB
 
         image = image.resize([self.img_size, self.img_size])
         image = image.convert('RGB')
-    #let's equalize and invert the image
+    #histogram equalization and invertion
         image = PIL.ImageOps.invert(image)
         image = torchvision.transforms.functional.equalize(image)
-    #sharpening
-        #tensor = tf.ToTensor()(image)
-        #blurred = tf.GaussianBlur(3)(tensor)
-        #detail = tensor - blurred
-        #sharpened = tensor + detail
-        #image = tf.ToPILImage()(sharpened)
+    
 
 
         label = torch.tensor(int(self.img_labels.iloc[idx, 1])).to(self.device)
@@ -57,16 +52,4 @@ class MuraDataset(Dataset):
 
 
 
-#simple codes to check if the images are inverted
-image = Image.open('/home/rosanna/Scrivania/visiope/project/MURA_project/MURA-v1.1/train/XR_FINGER/patient00042/study1_positive/image2.png')
-#image.show()
 
-#height, width = (64,64)
-#image = image.resize([width, height])
-#image = image.convert('RGB')
-#image = PIL.ImageOps.invert(image)
-#image = torchvision.transforms.functional.equalize(image)
-#image.show()
-#flat = np.array(image).flatten()
-#plt.hist(flat,128)
-#plt.show()
