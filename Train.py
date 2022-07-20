@@ -116,7 +116,11 @@ def anomaly_detection(model):
 
     # loss and optimizer
 
-    criterion = nn.CrossEntropyLoss()
+    #criterion = nn.CrossEntropyLoss() #to test cross entropy loss
+    
+    # NEGATIVE LOG LIKELIHOOD
+    m = nn.LogSoftmax(dim = 1) #softmax operation
+    criterion = nn.NLLLoss()
 
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
@@ -130,7 +134,8 @@ def anomaly_detection(model):
 
             # forward
             scores = model(data)
-            loss = criterion(scores, targets)
+            loss = criterion(m(scores), targets)
+            #loss = criterion(scores, targets) #to test cross entropy loss
             losses.append(loss.item())
 
             # backward
