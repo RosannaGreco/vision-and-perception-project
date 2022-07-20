@@ -18,7 +18,7 @@ from PIL import Image
 
 batch_size = 5
 
-test_set = MuraDataset(csv_file='./MURA-v1.1/train_anomalies.csv', transform=transforms.ToTensor(),  img_size=64)
+test_set = MuraDataset(csv_file='./MURA-v1.1/valid_anomalies.csv', transform=transforms.ToTensor(),  img_size=64)
 test_loader = DataLoader(dataset=test_set, batch_size=5, shuffle=True)
 
 
