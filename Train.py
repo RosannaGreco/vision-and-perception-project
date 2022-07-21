@@ -169,7 +169,7 @@ def anomaly_detection(model):
 def anomaly_classification(model):
     # data loading
 
-    dataset = MuraDataset(csv_file='/home/rosanna/Scrivania/visiope/project/MURA_project/HUMEROUS_ANOMALIES/humerous_anomalies_final.csv', transform=transforms.ToTensor(), device=device, img_size= 64)
+    dataset = MuraDataset(csv_file='./HUMEROUS_ANOMALIES/humerous_anomalies_final.csv', transform=transforms.ToTensor(), device=device, img_size= 64)
 
     train_set, test_set = torch.utils.data.random_split(dataset, [3375,600])
 
