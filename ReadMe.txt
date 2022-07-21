@@ -18,7 +18,9 @@ In order to test the third classificator properly, it is possible also to use
 TestAnomalyClassificator.py, which will plot a random image from the humerus anomalies dataset we 
 created and show the corresponding prediction and the ground truth. 
 
-Some of the models we trained are available in the Models Folder. But it is also possible to train the nets again using the 
+Some of the first model we trained is available in the Models Folder. The second and the third can be
+downloaded using the link in the file Models.txt in the Models Folder. 
+But it is also possible to train the nets again using the 
 training.py file, which uses the functions defined in Train.py. 
 The models can be trained in this way: 
 
