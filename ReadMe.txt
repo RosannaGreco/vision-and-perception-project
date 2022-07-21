@@ -19,7 +19,15 @@ TestAnomalyClassificator.py, which will plot a random image from the humerus ano
 created and show the corresponding prediction and the ground truth. 
 
 Some of the models we trained are available in the Models Folder. But it is also possible to train the nets again using the 
-training.py file, which uses the functions defined in Train.py
+training.py file, which uses the functions defined in Train.py. 
+The models can be trained in this way: 
+
+$ python3 training.py -first true
+
+$ python3 training.py -second true
+
+$ python3 training.py -third true
+
 
 In the Train.py script there are also commented lines testing a different kind of loss. 
 For the second classification, we obtained the best results using Negative Log Likelihood loss,
