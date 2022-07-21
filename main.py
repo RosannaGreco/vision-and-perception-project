@@ -51,7 +51,6 @@ def GreatestNumberIndex(tensor, n):
 
 parser = ArgumentParser()
 parser.add_argument('-i', '--image', required=True, help='path to image directory')
-parser.add_argument('-p', '--plot', default=True, help='plot also the image')
 args = parser.parse_args()
 
 # set device
