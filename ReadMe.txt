@@ -24,11 +24,11 @@ But it is also possible to train the nets again using the
 training.py file, which uses the functions defined in Train.py. 
 The models can be trained in this way: 
 
-$ python3 training.py -first true
+$ python3 training.py -first t
 
-$ python3 training.py -second true
+$ python3 training.py -second t
 
-$ python3 training.py -third true
+$ python3 training.py -third t
 
 
 In the Train.py script there are also commented lines testing a different kind of loss. 
